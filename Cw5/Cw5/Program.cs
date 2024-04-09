@@ -1,4 +1,5 @@
 
+using Cw5.Database;
 using Cw5.EndPoints;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddSingleton<MockDb>();
 
 var app = builder.Build();
 
