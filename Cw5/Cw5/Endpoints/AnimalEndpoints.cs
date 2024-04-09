@@ -1,4 +1,7 @@
-﻿namespace Cw5.EndPoints;
+﻿using Cw5.Database;
+using Cw5.Models;
+
+namespace Cw5.EndPoints;
 
 public static class AnimalEndpoints
 {
@@ -8,18 +11,20 @@ public static class AnimalEndpoints
         app.MapGet("/animals",  () =>
         {
             // 200 - OK
-            return Results.Ok();
+            var animals = StaticData.Animals;
+            
+            return Results.Ok(animals);
         });
         app.MapGet("/animals/{id}",  (int id) =>
         {
-    
+
             return Results.Ok(id);
         });
 
-        app.MapPost("/animals", () =>
+        app.MapPost("/animals", (Animal animal) =>
         {
             // 201 - Created
-            return Results.Created();
+            return Results.Created("", animal);
         });
     }
 }
