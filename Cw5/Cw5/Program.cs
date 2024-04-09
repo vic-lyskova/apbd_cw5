@@ -1,3 +1,6 @@
+
+using Cw5.EndPoints;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +20,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 //Minimal API
+app.MapAnimalEndpoints();
 
 // Controllers
 
