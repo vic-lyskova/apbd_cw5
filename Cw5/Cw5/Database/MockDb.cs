@@ -13,4 +13,17 @@ public class MockDb
         Animals.Add(new Animal("Jack", "snake", 1.5, "green scales"));
         Animals.Add(new Animal("Scout", "hamster", 0.9, "beige"));
     }
+
+    public Animal? GetAnimalById(int id)
+    {
+        foreach (var animal in Animals)
+        {
+            if (animal.Id == id)
+            {
+                return animal;
+            }
+        }
+
+        return null;
+    }
 }
