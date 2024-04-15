@@ -23,7 +23,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 //Minimal API
-app.MapAnimalEndpoints();
+//app.MapAnimalEndpoints();
 
 // Controllers
 app.MapControllers();
