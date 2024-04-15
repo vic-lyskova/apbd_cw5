@@ -25,4 +25,15 @@ public class MockDb
 
         return null;
     }
+    
+    public List<Visit>? GetVisitsOfAnimal(int id)
+    {
+        var visits = Visits.FindAll(v => v.Animal.Id == id);
+
+        if (visits.Count == 0)
+        {
+            return null;
+        }
+        return visits;
+    }
 }
