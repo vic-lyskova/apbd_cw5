@@ -29,7 +29,7 @@ public class AnimalController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CreateAnimal(Animal animal)
+    public IActionResult AddAnimal(Animal animal)
     {
         new MockDb().Animals.Add(animal);
         return Created();
