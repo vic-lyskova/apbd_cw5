@@ -48,6 +48,17 @@ public class AnimalController : ControllerBase
         new MockDb().Animals.Add(animal);
         return NoContent();
     }
-    
-    
+
+    [HttpDelete("{id::int}")]
+    public IActionResult DeleteAnimal(int id)
+    {
+        var animal = new MockDb().GetAnimalById(id);
+        if (animal == null)
+        {
+            return NoContent();
+        }
+
+        new MockDb().Animals.Remove(animal);
+        return NoContent();
+    }
 }
