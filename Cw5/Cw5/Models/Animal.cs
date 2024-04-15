@@ -12,7 +12,7 @@ public class Animal
 
     public Animal(string name, string category, double mass, string furColor)
     {
-        Id = _id++;
+        Id = ++_id;
         Name = name;
         Category = category;
         Mass = mass;
