@@ -22,7 +22,7 @@ public class AnimalController : ControllerBase
         var animal = new MockDb().GetAnimalById(id);
         if (animal == null)
         {
-            return NotFound();
+            return NotFound("Animal with id " + id + " not found");
         }
         
         return Ok(animal);
@@ -33,6 +33,20 @@ public class AnimalController : ControllerBase
     {
         new MockDb().Animals.Add(animal);
         return Created();
+    }
+
+    [HttpPut("{id:int}")]
+    public IActionResult UpdateAnimal(int id, Animal animal)
+    {
+        var animalToUpdate = new MockDb().GetAnimalById(id);
+        if (animalToUpdate == null)
+        {
+            return NotFound("Animal with id " + id + " not found");
+        }
+
+        new MockDb().Animals.Remove(animalToUpdate);
+        new MockDb().Animals.Add(animal);
+        return NoContent();
     }
     
     
