@@ -1,4 +1,5 @@
 ﻿using Cw5.Database;
+using Cw5.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cw5.Controllers;
@@ -28,8 +29,9 @@ public class AnimalController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AddAnimals()
+    public IActionResult CreateAnimal(Animal animal)
     {
+        new MockDb().Animals.Add(animal);
         return Created();
     }
     
