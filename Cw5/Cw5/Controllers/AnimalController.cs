@@ -14,10 +14,24 @@ public class AnimalController : ControllerBase
         var animals = new MockDb().Animals;
         return Ok(animals);
     }
+    
+    [HttpGet("{id:int}")]
+    public IActionResult GetAnimalById(int id)
+    {
+        var animal = new MockDb().GetAnimalById(id);
+        if (animal == null)
+        {
+            return NotFound();
+        }
+        
+        return Ok(animal);
+    }
 
     [HttpPost]
     public IActionResult AddAnimals()
     {
         return Created();
     }
+    
+    
 }
