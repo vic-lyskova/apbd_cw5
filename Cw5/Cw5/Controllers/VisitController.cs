@@ -21,8 +21,15 @@ public class VisitController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AddVisit(Visit visit)
+    public IActionResult AddVisit(string date, int id, string description, double price)
     {
+        var animal = new MockDb().GetAnimalById(id);
+        if (animal == null)
+        {
+            return NotFound("Animal with " + id + " not in the system");
+        }
+
+        var visit = new Visit(date, animal, description, price);
         StaticData.Visits.Add(visit);
         return Created();
     }
