@@ -23,7 +23,7 @@ public class VisitController : ControllerBase
     [HttpPost]
     public IActionResult AddVisit(Visit visit)
     {
-        new MockDb().Visits.Add(visit);
+        StaticData.Visits.Add(visit);
         return Created();
     }
 }

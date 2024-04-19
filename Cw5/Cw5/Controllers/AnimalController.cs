@@ -31,7 +31,7 @@ public class AnimalController : ControllerBase
     [HttpPost]
     public IActionResult AddAnimal(Animal animal)
     {
-        new MockDb().Animals.Add(animal);
+        StaticData.Animals.Add(animal);
         return Created();
     }
 
@@ -44,8 +44,8 @@ public class AnimalController : ControllerBase
             return NotFound("Animal with id " + id + " not found");
         }
 
-        new MockDb().Animals.Remove(animalToUpdate);
-        new MockDb().Animals.Add(animal);
+        StaticData.Animals.Remove(animalToUpdate);
+        StaticData.Animals.Add(animal);
         return NoContent();
     }
 
@@ -58,7 +58,7 @@ public class AnimalController : ControllerBase
             return NoContent();
         }
 
-        new MockDb().Animals.Remove(animal);
+        StaticData.Animals.Remove(animal);
         return NoContent();
     }
 }
